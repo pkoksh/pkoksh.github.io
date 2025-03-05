@@ -3,22 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" type="text/css" href="./assets/index.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
     <title>Happy 건수's HOME 🤣</title>
-    <script type="module" crossorigin src="/assets/index-CikG-Zyw.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DiwrgTda.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div class="container">
+      <h1>건호야, 수호야.. 이제 잘시간 입니다.😌</h1>
+      <h2>인터넷 종료까지 남은시간 : <span id="remain"></span></h2>
+    </div>
+    <script>
+      const ahour = 1000*60*60;
+      const amin = 1000*60;
+      window.setInterval(function(){
+        var thisTime = new Date();
+        var remainTime = new Date(thisTime.getFullYear(), thisTime.getMonth(), thisTime.getDate(), 22, 0,0,0) - thisTime;
+        var hour = Math.floor(remainTime/ahour);
+        var min = Math.floor((remainTime - hour*ahour)/(amin));
+        var ss = Math.floor((remainTime - hour*ahour - min*amin)/1000); 
+
+        document.querySelector("#remain").textContent = `${hour}:${min}:${ss}`;
+      },1000);
+    </script>
   </body>
 </html>
